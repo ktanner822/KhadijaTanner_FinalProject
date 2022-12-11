@@ -5,6 +5,8 @@ let color2;
 let c;
 let stars = [];// this sets the variable stars to an empty array in order for it hold and store multiple values when ran. 
 let sky = 0;
+let y1 = -90;
+let y2 = -100;
 
 
 function setup() {
@@ -35,8 +37,28 @@ function draw() {
     for (let i = 0; i < stars.length; i++) {
     stars[i].showStar();
     }
+  houseSceneOne();
   
-  //House
+  if (frameCount > 400 ){
+  spaceshipSceneTwo();
+  y1 += 1;
+  y2 += 1;  
+  
+}
+  if(y1 == 90){
+    y1.stop(); 
+  }
+  if(y2 == 100){
+    y2.stop();
+  }
+  
+  
+  
+
+}
+
+function houseSceneOne(){
+    //House
   stroke(0);
   fill(38, 29, 24);
   rect(500,400,500,500);
@@ -66,17 +88,46 @@ function draw() {
   ellipse(950,740,80,70);
   //roof
   triangle(412,426,1077,422,744,80);
-  fill(252, 252, 131)
+  fill(237, 205, 64)
   arc(750, 460, 80, 80, 0, PI)
+  noStroke();
+  fill(252, 252, 131, 50);
+  //triangle(715,550,786,550,749,488);
   //tree
+  stroke(0);
+  strokeWeight(2);
   fill(43, 34, 29)
   rect(150,460,100,300);
-  fill(22, 48, 14);
+  fill(1, 36, 9);
   ellipse(200,400,200,150);
   ellipse(200,540,300,200);
-  
+  //glow porch light
+  noStroke();
+  fill(255,255,100,4);
+  for(i = 0; i < 70; i++){
+    ellipse(750,495, i);
+  }
+  //attic window
+  stroke(3);
+  fill(1, 3, 28);
+  ellipse(750,300,100,100);
+  fill(38, 29, 24);
+  rect(745,250,10,100)
+  rect(700,300,100,10)
 }
 
+
+function spaceshipSceneTwo(){
+  fill(168, 237, 236);
+  ellipse(750,y1,150,150);
+  fill(89, 87, 87);
+  arc(750, y2, 200, 200, 0, PI);
+  
+  
+  
+  
+}
+  
 
 //this is the Star class, reference https://editor.p5js.org/rios/sketches/60mJWGaWi 
 class Star {
