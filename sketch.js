@@ -5,8 +5,9 @@ let color2;
 let c;
 let stars = [];// this sets the variable stars to an empty array in order for it hold and store multiple values when ran. 
 let sky = 0;
-let y1 = -90;
-let y2 = -100;
+let y1 = 90;
+let y2 = 100;
+let fly;
 
 
 function setup() {
@@ -19,6 +20,8 @@ function setup() {
   for (let i = 0; i < 1000; i++) {
     stars[i] = new Star(random(width), random(height), random(255))
   }
+  
+  fly = 1; 
    
   
 }
@@ -39,23 +42,31 @@ function draw() {
     }
   houseSceneOne();
   
-  if (frameCount > 400 ){
-  spaceshipSceneTwo();
-  y1 += 1;
-  y2 += 1;  
   
+  if(frameCount > 250){
+    spaceshipBeamSceneThree();
+  }
+  
+  if (frameCount > 200){
+  spaceshipSceneTwo(); 
+  }
+  while (y1 != 90 & y2 != 100){
+    y1 += fly; 
+    y2 += fly; 
+  }
+  
+  if(frameCount > 500){
+    background(3, 15, 82);
+    spaceshipSceneFour();
+    
+  }
+  
+    
 }
-  if(y1 == 90){
-    y1.stop(); 
-  }
-  if(y2 == 100){
-    y2.stop();
-  }
-  
-  
-  
 
-}
+
+
+
 
 function houseSceneOne(){
     //House
@@ -123,11 +134,145 @@ function spaceshipSceneTwo(){
   fill(89, 87, 87);
   arc(750, y2, 200, 200, 0, PI);
   
+}
+
+function spaceshipBeamSceneThree(){
+  fill(168, 237, 236,150);
+  triangle(650,400,857,400,750,167);
+}
+
+
+function spaceshipSceneFour(){
   
+    //planet 1 
+  fill(209, 94, 209);
+  ellipse(300,250,200,200);
+  
+  fill(199, 127, 219)
+  ellipse(300,250,180,180);
+  
+  fill(209, 94, 209);
+  ellipse(300,250,140,140);
+  
+//planet 2
+  fill(173, 184, 15);
+  ellipse(1200,250,150,150);
+  
+  fill(175, 219, 127)
+  ellipse(1200,250,100,100);
+  
+  //moon
+  fill(155, 156, 163)
+  ellipse(750,250,500,500);
+  noStroke();
+  fill(129, 130, 133);
+  ellipse(650,250,50,100);
+  ellipse(600,350,30,20);
+  ellipse(750,150,40,40);
+  ellipse(800,400,60,70);
+  //spaceship window
+  fill(168, 237, 236, 150);
+  rect(0,0,1500,400);
+  fill(141, 141, 143);
+  rect(0,400,1500,400);
+  fill(73, 73, 74)
+  rect(0,700,1500,200);
+  //motherboard
+  rect(600,400,280,240);
+  
+  //red
+  
+  fill(232, 19, 19)
+  rect(600,400,40,40);
+  rect(600,560,40,40);
+  rect(760,400,40,40);
+  rect(640,440,40,40);
+  rect(800,440,40,40);
+  rect(680,480,40,40);
+  rect(840,480,40,40);
+  rect(720,520,40,40);
+  rect(760,560,40,40);
+  rect(640,600,40,40);
+  rect(800,600,40,40);
+  
+  //blue
+  fill(19, 37, 232)
+  rect(600,440,40,40);
+  rect(600,600,40,40);
+  rect(720,400,40,40);
+  rect(760,440,40,40);
+  rect(640,480,40,40);
+  rect(800,480,40,40);
+  rect(680,520,40,40);
+  rect(840,520,40,40);
+  rect(720,560,40,40);
+  rect(760,600,40,40);
+  
+  //green
+  fill(17, 237, 9)
+  rect(600,480,40,40);
+  rect(640,400,40,40);
+  rect(800,400,40,40);
+  rect(680,440,40,40);
+  rect(840,440,40,40);
+  rect(720,480,40,40);
+  rect(640,520,40,40);
+  rect(760,520,40,40);
+  rect(680,560,40,40);
+  rect(800,560,40,40);
+  rect(720,600,40,40);
+  rect(840,600,40,40);
+
+  //purple
+  fill(165, 9, 237);
+  rect(600,520,40,40);
+  rect(680,400,40,40);
+  rect(840,400,40,40);
+  rect(720,440,40,40);
+  rect(760,480,40,40);
+  rect(800,520,40,40);
+  rect(640,560,40,40);
+  rect(840,560,40,40);
+  rect(680,600,40,40);
+  
+  //buttons 
+  fill(64, 2, 94)
+  ellipse(300,520,40,40);
+  fill(165, 9, 237);
+  ellipse(300,520,30,30);
+  
+  fill(189, 139, 11)
+  ellipse(350,600, 40,40);
+  fill(237, 176, 21)
+  ellipse(350,600, 30,30);
+  
+  fill(5, 176, 159)
+  ellipse(200,500,40,40)
+  fill(10, 245, 221)
+  ellipse(200,500,30,30)
+  
+  fill(150, 5, 138);
+  ellipse(420,520,40,40);
+  fill(232, 9, 214);
+  ellipse(420,520,30,30);
+  
+  //handle
+  fill(61, 60, 61);
+  rect(520,500,30,80);
+  fill(209, 207, 209)
+  rect(532,470,5,60);
+  fill(0);
+  ellipse(534,470,20,20);
+  //Big Red Button
+  rect(1025,500,80,100);
+  fill(255,0,0);
+  ellipse(1065,550,50,50);
+  fill(255,75)
+  rect(1015,490,100,120);
   
   
 }
-  
+
 
 //this is the Star class, reference https://editor.p5js.org/rios/sketches/60mJWGaWi 
 class Star {
