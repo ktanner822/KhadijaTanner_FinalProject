@@ -8,6 +8,16 @@ let sky = 0;
 let y1 = 90;
 let y2 = 100;
 let fly;
+let img1;
+//let beamsound; 
+
+function preload() {
+  img1 = loadImage('AlienBeam(2).gif');
+  
+}
+
+
+
 
 
 function setup() {
@@ -23,6 +33,8 @@ function setup() {
   
   fly = 1; 
    
+  
+  
   
 }
 
@@ -54,12 +66,18 @@ function draw() {
     y1 += fly; 
     y2 += fly; 
   }
+  if (frameCount >280){
+    image(img1, 0, 0, windowWidth, windowHeight);
+    
+  }
+  
   
   if(frameCount > 500){
     background(3, 15, 82);
     spaceshipSceneFour();
     
   }
+  
   
     
 }
@@ -140,6 +158,11 @@ function spaceshipBeamSceneThree(){
   fill(168, 237, 236,150);
   triangle(650,400,857,400,750,167);
 }
+
+
+  
+
+
 
 
 function spaceshipSceneFour(){
